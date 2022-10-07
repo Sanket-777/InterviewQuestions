@@ -5,17 +5,22 @@ using namespace std;
 void arrangeCoins(vector<long> coins)
 {
     long i = 0;
-    int n = coins.size();
     long sum = 0;
-    while(sum <= n)
-    sum+=++i;
-    
-    cout<<i-1<<endl;
+    for(int j = 0;j < coins.size();j++)
+    {   i = 0;
+        sum = 0;
+        int n = coins[j];
+         while(sum <= n)
+         {
+             sum+=++i;
+         }
+             cout<<i-1<<endl;
+    } 
 }
 
 int main()
 {
- vector<long> coins = {1,2,3,4,5,6,7,8};
+ vector<long> coins = {2,5,8,3};
  arrangeCoins(coins);
 return 0;
 }
