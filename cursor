@@ -1,0 +1,32 @@
+create procedure roll_list()
+begin.
+declare oldrollnumber int;
+declare oldname varchar(10);
+declare newrollnumber int;
+declare newname varchar(10);
+declare done int default false;
+declare c1 cursor for select roll,name from old roll,
+declare c2 cursor for select roll, name from new roll;
+declare continue handler for not found set done=true;
+open c1;
+loop1:loop
+fetch c1 into oldrollnumber,oldname; 
+if done then
+leave loop1; 
+end if;
+open c2;
+loop2:loop
+fetch c2 into newrollnumber, newname;
+if done then
+insert into new roll values(oldrollnumber, oldname);
+set done=false;
+close c2;
+leave loop2;
+end if; 
+if oldrollnumber=newrollnumber then
+leave loop2; 
+end if;
+end loop;
+end loop;
+close c1;
+end $
